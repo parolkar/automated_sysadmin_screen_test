@@ -1,0 +1,22 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName foo.dev
+    # ServerAlias www.foo.dev
+    DocumentRoot /home/vagrant/projects/foo/public
+    <Directory /home/vagrant/projects/foo/public/>
+            EnableSendfile Off
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride All
+            Order allow,deny
+            allow from all
+    </Directory>
+
+
+    ErrorLog ${APACHE_LOG_DIR}/foo-error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel error
+
+    CustomLog ${APACHE_LOG_DIR}/foo-access.log combined
+</VirtualHost>

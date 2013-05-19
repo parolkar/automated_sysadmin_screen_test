@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require File.dirname(__FILE__) + "/config/aws.rb" 
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "aws-dummy"
+
+  config.vm.synced_folder "../litmus/build", "/litmus/build"
+ 
+
+   config.vm.provision :puppet do |puppet|
+     puppet.manifests_path = "puppet"
+     puppet.manifest_file  = "site.pp"
+     puppet.module_path    = "puppet/modules"
+     puppet.facter = { 'fqdn' => 'superstar.admin.com' #config.vm.host_name
+                     }
+     puppet.options = "--verbose --debug"
+   end
+  
+   config.vm.provider :aws do |aws, override|
+    aws.access_key_id = AWS_CONFIG['access_key_id']
+    aws.secret_access_key = AWS_CONFIG['secret_access_key']
+    aws.keypair_name = AWS_CONFIG['keypair_name']
+    aws.instance_type = AWS_CONFIG['instance_type']
+    aws.tags = {
+      'Name' => 'devops_screentest',
+      'Purpose' => 'Test Machine for DevOps Tests'
+    }
+
+    aws.user_data = File.read("#{AWS_CONFIG['user_data_file']}")
+    aws.ami = AWS_CONFIG['ami']
+
+    override.ssh.username = "ubuntu"
+    override.ssh.private_key_path = AWS_CONFIG['private_key_path']
+   end
+   
+end

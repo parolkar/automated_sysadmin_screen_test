@@ -1,0 +1,10 @@
+
+AWS_CONFIG = {
+  "ami" => "ami-7a4c2c13",
+  "instance_type"=> "m1.small",
+  "user_data_file"=> "ec2-user-data-script.sh",
+  "access_key_id"=>"[Your access key]",
+  "secret_access_key" => "[You secret access key]",
+  "keypair_name" => "devops-screentest-keypair",
+  "private_key_path" => "~/.ssh/devops-screentest-keypair.pem"
+}
