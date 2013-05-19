@@ -1,0 +1,6 @@
+.redcar
+.vagrant
+.DS_Store
+supervillain/.vagrant*
+supervillain/config/aws.rb
+litmus/build/*
