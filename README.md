@@ -7,21 +7,7 @@ Are you hiring Administrators/Devops in your Ops team? Do you need a better way 
 
 **Automated SysAdmin Screen Test Toolkit (ASASTT)** allows you to write your interview test in **Rspec** and provision a problem environment using **Puppet** on your choice of hosting (local or AWS EC2). 
 
-### How does it work?
-
-* You formulate a creative sysadmin problem with puppet & rspec (something that can be solved in short time frame (like 15 min))
-* The rspec tests describes the check for when problem is successfully solved
-* You provision the server which also transfers encrypted rspec tests 
-* Candidate logs-in, finds the instructions and finishes the problem or the time expires
-* You run the test (which decrypts it) and provide you result on how many rspec examples passed and failed.
-
-
-### Using the toolkit
-There are two components in this toolkit
- 
-* **Supervillain** : This is the puppet part of the toolkit which allows you to provision target server but does some nasty modifications to the environment to make problem challenging
-* **Litmus** : This is the rspec test suite which helps you perform the checks
-
+##For more documentation & examples please visit https://github.com/zalora/automated_sysadmin_screen_test
 
 ---------------------------------------------------------------
 <sub><font size='1'>
